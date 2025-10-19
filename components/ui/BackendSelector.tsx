@@ -66,20 +66,20 @@ export default function BackendSelector() {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setShowDropdown(!showDropdown)}
-        className="flex items-center px-3 py-1 text-sm font-medium rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-colors"
+        className="flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 transition-all"
       >
         <span className="mr-1">{getBackendLabel(selectedBackend)}</span>
         <ChevronDown className="h-4 w-4" />
       </button>
       
       {showDropdown && (
-        <div className="absolute left-0 mt-1 w-32 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-10 border border-gray-200 dark:border-gray-700">
+        <div className="absolute left-0 mt-2 w-32 bg-zinc-800 rounded-lg shadow-xl py-1 z-10 border border-zinc-700">
           <button
             onClick={() => handleBackendChange('n8n')}
             className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
               selectedBackend === 'n8n' 
-                ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-medium' 
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                ? 'bg-green-500/20 text-green-400 font-medium' 
+                : 'text-zinc-300 hover:bg-zinc-700'
             }`}
           >
             n8n
@@ -88,8 +88,8 @@ export default function BackendSelector() {
             onClick={() => handleBackendChange('python')}
             className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
               selectedBackend === 'python' 
-                ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white font-medium' 
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                ? 'bg-green-500/20 text-green-400 font-medium' 
+                : 'text-zinc-300 hover:bg-zinc-700'
             }`}
           >
             Python

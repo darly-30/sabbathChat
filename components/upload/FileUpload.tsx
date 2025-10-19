@@ -149,8 +149,10 @@ export default function FileUpload({ onUploadComplete, onError, model = 'gemini'
   return (
     <div className="flex flex-col gap-4 w-full">
       <div
-        className={`border-2 border-dashed rounded-lg p-6 text-center transition-all ${
-          isDragging ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/30' : 'border-gray-300 dark:border-gray-700'
+        className={`border-2 border-dashed rounded-xl p-6 text-center transition-all ${
+          isDragging 
+            ? 'border-green-400 bg-green-400/10 shadow-lg shadow-green-500/20' 
+            : 'border-zinc-700 bg-zinc-800/30 hover:border-zinc-600'
         }`}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
@@ -159,7 +161,9 @@ export default function FileUpload({ onUploadComplete, onError, model = 'gemini'
       >
         <div className="flex flex-col items-center justify-center py-4">
           <svg
-            className="w-12 h-12 mb-4 text-gray-500 dark:text-gray-400"
+            className={`w-12 h-12 mb-4 transition-colors ${
+              isDragging ? 'text-green-400' : 'text-zinc-500'
+            }`}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -172,10 +176,14 @@ export default function FileUpload({ onUploadComplete, onError, model = 'gemini'
               d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
             />
           </svg>
-          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            {selectedFile ? selectedFile.name : t('dragDropText')}
+          <p className="mb-2 text-sm text-zinc-300">
+            {selectedFile ? (
+              <span className="text-green-400 font-medium">{selectedFile.name}</span>
+            ) : (
+              t('dragDropText')
+            )}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{t('allowedFileTypes')}</p>
+          <p className="text-xs text-zinc-500">{t('allowedFileTypes')}</p>
         </div>
         <input
           type="file"
@@ -189,7 +197,7 @@ export default function FileUpload({ onUploadComplete, onError, model = 'gemini'
           variant="outline"
           onClick={() => fileInputRef.current?.click()}
           disabled={isUploading}
-          className="mt-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-600 dark:hover:text-gray-200"
+          className="mt-2 bg-zinc-800 text-zinc-200 border border-zinc-700 hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
         >
           {t('selectFile')}
         </Button>
@@ -198,7 +206,7 @@ export default function FileUpload({ onUploadComplete, onError, model = 'gemini'
       <Button
         onClick={handleUpload}
         disabled={!selectedFile || isUploading}
-        className="w-full bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 text-white"
+        className="w-full bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-semibold shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all"
       >
         <svg 
           className="w-4 h-4 mr-2"

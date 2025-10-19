@@ -39,13 +39,13 @@ export function ConversationSidebar({
     : conversations;
 
   return (
-    <div className="w-64 h-full border-r border-gray-200 dark:border-gray-700 flex flex-col bg-gray-50 dark:bg-gray-800">
+    <div className="w-64 h-full border-r border-zinc-800 flex flex-col bg-zinc-900/95 backdrop-blur-sm">
       {/* New conversation button */}
-      <div className="p-3 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-3 border-b border-zinc-800">
         <button
           data-testid="new-conversation"
           onClick={onNewConversation}
-          className="flex items-center justify-center gap-2 w-full p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors mb-2"
+          className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-semibold rounded-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-200 mb-2"
         >
           <MessageSquarePlus className="h-5 w-5" />
           <span>{t('interface.newConversation')}</span>
@@ -55,7 +55,7 @@ export function ConversationSidebar({
         {onShowFileUpload && (
           <button
             onClick={onShowFileUpload}
-            className="flex items-center justify-center gap-2 w-full p-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-md transition-colors"
+            className="flex items-center justify-center gap-2 w-full p-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 rounded-lg transition-all duration-200"
           >
             <PaperclipIcon className="h-5 w-5" />
             <span>{t('interface.uploadFile')}</span>
@@ -64,20 +64,20 @@ export function ConversationSidebar({
       </div>
       
       {/* Search input */}
-      <div className="p-3 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-3 border-b border-zinc-800">
         <input
           type="text"
           data-testid="sidebar-search"
           placeholder={t('sidebar.search')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full p-2 border border-zinc-700 rounded-lg bg-zinc-800/50 text-white placeholder:text-zinc-500 focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-colors"
         />
       </div>
       
       {/* Conversations list */}
       <div className="flex-1 overflow-y-auto scrollbar-hide p-2">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-2">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2 px-2">
           {t('sidebar.conversations')}
         </h2>
         
@@ -85,24 +85,28 @@ export function ConversationSidebar({
           <ul className="space-y-1">
             {filteredConversations.map((conversation) => (
               <li key={conversation.id} className="relative">
-                <div className={`w-full p-2 rounded-md flex items-start justify-between ${
+                <div className={`w-full p-2 rounded-lg flex items-start justify-between transition-all duration-200 ${
                   activeConversationId === conversation.id
-                    ? 'bg-gray-200 dark:bg-gray-700'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                    ? 'bg-green-500/20 border border-green-500/30'
+                    : 'hover:bg-zinc-800 border border-transparent'
                 }`}>
                   <button
                     onClick={() => onSelectConversation(conversation.id)}
                     className="flex-grow text-left text-sm overflow-hidden mr-1"
                   >
                     <div className="w-full">
-                      <span className="block text-gray-900 dark:text-gray-50 text-xs whitespace-normal leading-relaxed">
+                      <span className={`block text-xs whitespace-normal leading-relaxed ${
+                        activeConversationId === conversation.id
+                          ? 'text-green-400 font-medium'
+                          : 'text-zinc-300'
+                      }`}>
                         {formatConversationTitle(conversation.title || 'Untitled conversation')}
                       </span>
                     </div>
                   </button>
                   
                   <button 
-                    className="p-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 flex-shrink-0"
+                    className="p-1 text-zinc-500 hover:text-red-400 flex-shrink-0 transition-colors"
                     onClick={(e) => {
                       e.stopPropagation();
                       if (onDeleteConversation) {
@@ -120,7 +124,7 @@ export function ConversationSidebar({
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-gray-400 p-2">
+          <p className="text-sm text-zinc-500 p-2">
             {searchQuery ? 'No conversations found' : t('sidebar.noConversations')}
           </p>
         )}

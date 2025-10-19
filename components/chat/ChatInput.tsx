@@ -48,7 +48,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={t('placeholder')}
-        className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-gray-50 text-gray-900 resize-none scrollbar-hide"
+        className="w-full px-4 py-3 pr-12 border border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 bg-zinc-800/50 text-white placeholder:text-zinc-500 resize-none scrollbar-hide transition-all"
         rows={1}
         maxLength={4000}
         disabled={isLoading}
@@ -57,7 +57,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
         type="submit"
         data-testid="send-button"
         disabled={!message.trim() || isLoading}
-        className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-md text-zinc-500 hover:text-green-400 hover:bg-green-400/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <SendIcon className="h-5 w-5" />
         <span className="sr-only">{t('send')}</span>

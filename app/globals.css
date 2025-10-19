@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+
+  /* Base colors */
+  --primary: 25 113 225;
+  --primary-foreground: 255 255 255;
+  --secondary: 240 240 245;
+  --secondary-foreground: 30 30 35;
+  --accent: 25 113 225;
+  --accent-foreground: 255 255 255;
+  --background: 255 255 255;
+  --foreground: 20 20 20;
+  
+  /* UI component colors */
+  --card: 255 255 255;
+  --card-foreground: 20 20 20;
+  --popover: 255 255 255;
+  --popover-foreground: 20 20 20;
+  --muted: 240 240 245;
+  --muted-foreground: 120 120 130;
+  --border: 230 230 235;
+  --input: 230 230 235;
+  --ring: 25 113 225;
+  --destructive: 225 40 40;
+  --destructive-foreground: 255 255 255;
+  
+  /* Border radius */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 20, 20, 25;
+  --background-end-rgb: 20, 20, 25;
+  
+  /* Dark mode colors */
+  --primary: 25 113 225;
+  --primary-foreground: 255 255 255;
+  --secondary: 40 40 45;
+  --secondary-foreground: 240 240 245;
+  --accent: 25 113 225;
+  --accent-foreground: 255 255 255;
+  --background: 20 20 25;
+  --foreground: 240 240 245;
+  
+  /* Dark UI component colors */
+  --card: 30 30 35;
+  --card-foreground: 240 240 245;
+  --popover: 30 30 35;
+  --popover-foreground: 240 240 245;
+  --muted: 40 40 45;
+  --muted-foreground: 150 150 160;
+  --border: 50 50 60;
+  --input: 50 50 60;
+  --ring: 25 113 225;
+  --destructive: 225 60 60;
+  --destructive-foreground: 255 255 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 20, 20, 25;
+    --background-end-rgb: 20, 20, 25;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+/* Animation for typing indicator */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}

@@ -1,0 +1,45 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Instalar PNPM
+RUN npm install -g pnpm@8
+
+# Copiar package.json y pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml ./
+
+# Instalar dependencias
+RUN pnpm install --frozen-lockfile
+
+# Copiar el resto de archivos
+COPY . .
+
+# Generar Prisma Client
+COPY prisma ./prisma/
+RUN npx prisma generate
+
+# Construir la aplicación
+RUN pnpm build
+
+# Imagen de producción
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instalar PNPM
+RUN npm install -g pnpm@8
+
+# Copiar los archivos necesarios para producción
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules ./node_modules
+
+# Exponer puerto
+EXPOSE 3000
+
+# Iniciar la aplicación
+CMD ["pnpm", "start"]

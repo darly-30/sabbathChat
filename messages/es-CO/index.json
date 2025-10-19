@@ -1,0 +1,59 @@
+{
+  "chat": {
+    "interface": {
+      "newConversation": "Nueva Conversación",
+      "placeholder": "Escribe tu mensaje aquí...",
+      "send": "Enviar",
+      "regenerate": "Regenerar",
+      "copy": "Copiar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "viewSources": "Ver Fuentes",
+      "typing": "Escribiendo...",
+      "thinking": "Pensando...",
+      "uploadFile": "Subir archivo"
+    },
+    "sidebar": {
+      "conversations": "Conversaciones",
+      "search": "Buscar conversaciones",
+      "noConversations": "No hay conversaciones aún",
+      "deleteConfirm": "¿Estás seguro de que quieres eliminar esta conversación?",
+      "delete": "Eliminar"
+    },
+    "settings": {
+      "title": "Configuración",
+      "ragSettings": "Configuración de RAG",
+      "topK": "Número de fuentes (Top-K)",
+      "temperature": "Creatividad",
+      "language": "Idioma",
+      "theme": "Tema",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "logout": "Cerrar sesión",
+      "modelSelector": "Modelo",
+      "modelGemini": "Gemini",
+      "modelOpenAI": "OpenAI"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No"
+  },
+  "FileUpload": {
+    "dragDropText": "Arrastra y suelta archivos aquí o haz clic para seleccionar",
+    "allowedFileTypes": "Solo archivos PDF y CSV",
+    "selectFile": "Seleccionar archivo",
+    "uploadFile": "Subir archivo",
+    "uploading": "Subiendo...",
+    "uploadSuccess": "Archivo subido correctamente",
+    "uploadError": "Error al subir el archivo",
+    "uploadRequired": "Por favor, carga un archivo primero para usar el backend de Python"
+  }
+}

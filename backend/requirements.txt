@@ -1,0 +1,16 @@
+flask==3.0.3
+flask-cors==4.0.1
+openai>=1.10.0,<2.0.0
+chromadb==0.4.24
+PyPDF2==3.0.1
+python-dotenv==1.0.1
+numpy>=1.26.0
+typing-extensions>=4.8.0
+langchain==0.2.16
+langchain-openai==0.1.23
+langchain-community==0.2.16
+
+# Dependencias opcionales que no parecen estar en uso directo
+# pero que podrían ser requeridas por chromadb
+hnswlib==0.8.0
+pandas>=2.1.0
